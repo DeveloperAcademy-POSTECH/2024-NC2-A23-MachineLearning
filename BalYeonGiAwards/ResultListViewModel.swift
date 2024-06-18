@@ -17,6 +17,33 @@ class ResultListViewModel: ObservableObject{
     var emotionDictionary = [0: "neutral", 1: "happiness", 2: "surprise", 3: "sadness",
                              4: "anger", 5: "disgust", 6: "fear"]
     
+    // MARK: GETTING CLASSIFICATION OUTPUT FROM MODEL AFTER INPUTTING IMAGE DATA
+    func perform(){
+        guard let uiImage = chosenImage else{
+            print("No Image")
+            return
+        }
+        guard let multiArray = imageToMLMultiArray(image: uiImage, size: CGSize(width: 48, height: 48)) else {return}
+        
+        guard let mlModel = try? ModelNew(configuration: .init()) else{
+            print("Failed to make model")
+            return
+        }
+        do{
+            let prediction = try mlModel.prediction(input: ModelNewInput(input: multiArray))
+            print(prediction.var_267)
+            let predictionArray = convertToArray(prediction.var_267)
+            let probabilities = softmax(predictionArray)
+            var resultString = ""
+            for i in 0..<probabilities.count{
+                guard let emotion = emotionDictionary[i] else {return}
+                let percent = Double(round(1000 * probabilities[i]) / 10)
+                resultString += "\(emotion): \(percent)% \n"
+            }
+        } catch{
+            print("error: \(error)")
+        }
+    }
     
     // MARK: PRE-PROCESSING INPUT IMAGE
     private func imageToMLMultiArray(image: UIImage, size: CGSize) -> MLMultiArray? {
