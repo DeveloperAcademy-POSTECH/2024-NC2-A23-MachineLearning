@@ -14,6 +14,7 @@
 		6B9310B72C21531400A1F361 /* BalYeonGiAwardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310B62C21531400A1F361 /* BalYeonGiAwardsTests.swift */; };
 		6B9310C12C21531400A1F361 /* BalYeonGiAwardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310C02C21531400A1F361 /* BalYeonGiAwardsUITests.swift */; };
 		6B9310C32C21531400A1F361 /* BalYeonGiAwardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310C22C21531400A1F361 /* BalYeonGiAwardsUITestsLaunchTests.swift */; };
+		6B9310D22C21674B00A1F361 /* ResultListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310D12C21674A00A1F361 /* ResultListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		6B9310BC2C21531400A1F361 /* BalYeonGiAwardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BalYeonGiAwardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9310C02C21531400A1F361 /* BalYeonGiAwardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalYeonGiAwardsUITests.swift; sourceTree = "<group>"; };
 		6B9310C22C21531400A1F361 /* BalYeonGiAwardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalYeonGiAwardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6B9310D12C21674A00A1F361 /* ResultListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		6B9310992C21531300A1F361 = {
 			isa = PBXGroup;
 			children = (
+				6B9310D12C21674A00A1F361 /* ResultListViewModel.swift */,
 				6B9310A42C21531300A1F361 /* BalYeonGiAwards */,
 				6B9310B52C21531400A1F361 /* BalYeonGiAwardsTests */,
 				6B9310BF2C21531400A1F361 /* BalYeonGiAwardsUITests */,
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B9310A82C21531300A1F361 /* ContentView.swift in Sources */,
+				6B9310D22C21674B00A1F361 /* ResultListViewModel.swift in Sources */,
 				6B9310A62C21531300A1F361 /* BalYeonGiAwardsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
