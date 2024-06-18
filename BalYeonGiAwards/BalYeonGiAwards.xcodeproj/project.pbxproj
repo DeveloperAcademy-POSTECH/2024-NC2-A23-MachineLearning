@@ -18,6 +18,7 @@
 		6B9310D42C216CCE00A1F361 /* ModelNew.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310D32C216CCE00A1F361 /* ModelNew.mlpackage */; };
 		6B9310D62C21768B00A1F361 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310D52C21768B00A1F361 /* CameraView.swift */; };
 		6B9310D82C21769E00A1F361 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310D72C21769E00A1F361 /* CameraViewModel.swift */; };
+		6B9310DC2C21816300A1F361 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310DB2C21816300A1F361 /* CameraPreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		6B9310D52C21768B00A1F361 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		6B9310D72C21769E00A1F361 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		6B9310DA2C2178D900A1F361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6B9310DB2C21816300A1F361 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +85,7 @@
 		6B9310992C21531300A1F361 = {
 			isa = PBXGroup;
 			children = (
-				6B9310D52C21768B00A1F361 /* CameraView.swift */,
 				6B9310D32C216CCE00A1F361 /* ModelNew.mlpackage */,
-				6B9310D92C2176A400A1F361 /* ViewModels */,
 				6B9310A42C21531300A1F361 /* BalYeonGiAwards */,
 				6B9310B52C21531400A1F361 /* BalYeonGiAwardsTests */,
 				6B9310BF2C21531400A1F361 /* BalYeonGiAwardsUITests */,
@@ -106,6 +106,9 @@
 		6B9310A42C21531300A1F361 /* BalYeonGiAwards */ = {
 			isa = PBXGroup;
 			children = (
+				6B9310DB2C21816300A1F361 /* CameraPreviewView.swift */,
+				6B9310D52C21768B00A1F361 /* CameraView.swift */,
+				6B9310D92C2176A400A1F361 /* ViewModels */,
 				6B9310DA2C2178D900A1F361 /* Info.plist */,
 				6B9310A52C21531300A1F361 /* BalYeonGiAwardsApp.swift */,
 				6B9310A72C21531300A1F361 /* ContentView.swift */,
@@ -282,6 +285,7 @@
 				6B9310D42C216CCE00A1F361 /* ModelNew.mlpackage in Sources */,
 				6B9310A82C21531300A1F361 /* ContentView.swift in Sources */,
 				6B9310D22C21674B00A1F361 /* ResultListViewModel.swift in Sources */,
+				6B9310DC2C21816300A1F361 /* CameraPreviewView.swift in Sources */,
 				6B9310D62C21768B00A1F361 /* CameraView.swift in Sources */,
 				6B9310A62C21531300A1F361 /* BalYeonGiAwardsApp.swift in Sources */,
 				6B9310D82C21769E00A1F361 /* CameraViewModel.swift in Sources */,

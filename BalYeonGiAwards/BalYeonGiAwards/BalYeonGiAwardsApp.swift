@@ -11,7 +11,8 @@ import SwiftUI
 struct BalYeonGiAwardsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            CameraView()
         }
     }
 }

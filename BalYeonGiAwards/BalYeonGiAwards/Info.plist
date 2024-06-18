@@ -3,6 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraReactionEffectGesturesEnabledDefault</key>
-	<false/>
+	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>For users to take photos within the app</string>
 </dict>
 </plist>
