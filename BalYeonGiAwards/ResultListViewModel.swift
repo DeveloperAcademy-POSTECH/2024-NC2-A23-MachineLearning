@@ -18,7 +18,7 @@ class ResultListViewModel: ObservableObject{
                              4: "anger", 5: "disgust", 6: "fear"]
     
     // MARK: GETTING CLASSIFICATION OUTPUT FROM MODEL AFTER INPUTTING IMAGE DATA
-    func perform(){
+    func performRequest(){
         guard let uiImage = chosenImage else{
             print("No Image")
             return
