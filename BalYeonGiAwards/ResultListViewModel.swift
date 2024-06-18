@@ -17,6 +17,8 @@ class ResultListViewModel: ObservableObject{
     var emotionDictionary = [0: "neutral", 1: "happiness", 2: "surprise", 3: "sadness",
                              4: "anger", 5: "disgust", 6: "fear"]
     
+    
+    // MARK: PRE-PROCESSING INPUT IMAGE
     private func imageToMLMultiArray(image: UIImage, size: CGSize) -> MLMultiArray? {
         guard let resizedImage = image.resize(to: size),
               let grayscaleImage = resizedImage.toGrayScale(),
@@ -38,6 +40,24 @@ class ResultListViewModel: ObservableObject{
             }
         }
         return mlMultiArray
+    }
+    
+    // MARK: POST-PROCESSING OUTPUT
+    func convertToArray(_ multiArray: MLMultiArray) -> [Double]{
+        let count = multiArray.count
+        var array: [Double] = []
+        for i in 0..<count{
+            array.append(multiArray[i].doubleValue)
+        }
+        return array
+    }
+    func softmax(_ x: [Double]) -> [Double]{
+        let maxScore = x.max() ?? 0.0
+        let expScores = x.map {
+            exp($0 - maxScore)
+        }
+        let sumExpScores = expScores.reduce(0, +)
+        return expScores.map{$0 / sumExpScores}
     }
 }
 
