@@ -52,6 +52,7 @@
 		6B9310D32C216CCE00A1F361 /* ModelNew.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = ModelNew.mlpackage; sourceTree = "<group>"; };
 		6B9310D52C21768B00A1F361 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		6B9310D72C21769E00A1F361 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		6B9310DA2C2178D900A1F361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +106,7 @@
 		6B9310A42C21531300A1F361 /* BalYeonGiAwards */ = {
 			isa = PBXGroup;
 			children = (
+				6B9310DA2C2178D900A1F361 /* Info.plist */,
 				6B9310A52C21531300A1F361 /* BalYeonGiAwardsApp.swift */,
 				6B9310A72C21531300A1F361 /* ContentView.swift */,
 				6B9310A92C21531400A1F361 /* Assets.xcassets */,
@@ -449,6 +451,7 @@
 				DEVELOPMENT_TEAM = LLTXZL34C3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BalYeonGiAwards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -478,6 +481,7 @@
 				DEVELOPMENT_TEAM = LLTXZL34C3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BalYeonGiAwards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
