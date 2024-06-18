@@ -9,9 +9,14 @@ import Foundation
 import SwiftUI
 import AVFoundation
 
-class CameraViewModel{
+class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject{
     var frame: CGRect?
     let captureSession = AVCaptureSession()
+    let output = AVCapturePhotoOutput()
+    @Published var currentPhoto: UIImage?
+    @Published var currentNum: Int?
+    @Published var photos: [UIImage] = []
+    
     enum Status{
         case permitted
         case notPermitted
@@ -34,7 +39,7 @@ class CameraViewModel{
     }
     
     func setupCaptureSession(){
-        if let captureDevice = AVCaptureDevice.default(for: AVMediaType.video){
+        if let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front){
             do {
                 let input = try AVCaptureDeviceInput(device: captureDevice)
                 if captureSession.canAddInput(input){
@@ -43,17 +48,60 @@ class CameraViewModel{
             } catch {
                 print("Failed to set up input device: \(error)")
             }
-            
-            let output = AVCapturePhotoOutput()
-            captureSession.canAddOutput(output)
-            captureSession.addOutput(output)
+            if captureSession.canAddOutput(output){
+                captureSession.addOutput(output)
+            }
+            captureSession.sessionPreset = .photo
             captureSession.startRunning()
-//            if captureSession.canAddOutput() add output
-//            let cameraLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-//            guard let viewFrame = frame else {return}
-//            cameraLayer.frame = viewFrame
-//            cameraLayer.videoGravity = .resizeAspectFill
-//            
         }
+    }
+    func takePhoto(){
+        DispatchQueue.global(qos: .background).async{
+            self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+            print("took photo")
+        }
+    }
+    
+    func retakePhoto(){
+        DispatchQueue.global(qos: .background).async{
+            self.captureSession.startRunning()
+        }
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: (any Error)?) {
+        if error != nil{
+            print("error whil take photo: \(error)")
+            return
+        }
+        DispatchQueue.global(qos:.background).async{
+            self.captureSession.stopRunning()
+        }
+        
+        guard let imageData = photo.fileDataRepresentation() else {
+            print("Error while generating image from photo capture data.");
+            return
+        }
+        
+        guard let uiImage = UIImage(data: imageData) else {
+            print("Unable to generate UIImage from image data.");
+            return
+        }
+        let imageWidth = uiImage.size.width
+        let imageHeight = uiImage.size.height
+        let cropLength = min(imageWidth, imageHeight)
+        
+        let cropRect = CGRect(
+            x: (imageWidth - cropLength) / 2,
+            y: (imageHeight - cropLength) / 2,
+            width: cropLength,
+            height: cropLength
+        )
+        
+        guard let cgImage = uiImage.cgImage?.cropping(to: cropRect) else { return }
+        currentPhoto = UIImage(cgImage: cgImage, scale: uiImage.scale, orientation: uiImage.imageOrientation)
+        if let image = currentPhoto{
+            photos.append(image)
+        }
+        print("Picture taken: \(currentPhoto)")
     }
 }

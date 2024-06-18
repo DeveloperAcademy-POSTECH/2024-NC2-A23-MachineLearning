@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct BalYeonGiAwardsApp: App {
+    var cameraVM = CameraViewModel()
     var body: some Scene {
         WindowGroup {
 //            ContentView()
             CameraView()
+                .environmentObject(cameraVM)
         }
     }
 }
