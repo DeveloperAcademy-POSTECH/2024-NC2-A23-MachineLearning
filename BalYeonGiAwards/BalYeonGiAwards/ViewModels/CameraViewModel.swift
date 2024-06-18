@@ -14,7 +14,8 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
     let captureSession = AVCaptureSession()
     let output = AVCapturePhotoOutput()
     @Published var currentPhoto: UIImage?
-    @Published var currentNum: Int?
+    @Published var numPeople = 2
+    @Published var currentNum = 0
     @Published var photos: [UIImage] = []
     
     enum Status{
@@ -100,8 +101,9 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
         guard let cgImage = uiImage.cgImage?.cropping(to: cropRect) else { return }
         currentPhoto = UIImage(cgImage: cgImage, scale: uiImage.scale, orientation: uiImage.imageOrientation)
         if let image = currentPhoto{
-            photos.append(image)
+            photos[currentNum] = image // revisit this logic
         }
+        currentNum += 1
         print("Picture taken: \(currentPhoto)")
     }
 }

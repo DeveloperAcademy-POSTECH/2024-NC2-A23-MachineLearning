@@ -28,14 +28,24 @@ struct CameraView: View {
                     }label:{
                         Text("Take Photo")
                     }
-                    Button{
-                        cameraVM.retakePhoto()
-                    }label:{
-                        Text("Retake")
+                    
+                    if cameraVM.currentNum == cameraVM.numPeople{
+                        Button{
+                            //move to resultlist page
+                        }label:{
+                            Text("결과보기")
+                        }
+                    }else{
+                        Button{
+                            cameraVM.retakePhoto()
+                        }label:{
+                            Text("다음사람")
+                        }
                     }
                     NavigationLink(destination: ContentView(image: cameraVM.currentPhoto)){
                         Text("See photo")
                     }
+                    
                 }
             }.task{
                 do{
