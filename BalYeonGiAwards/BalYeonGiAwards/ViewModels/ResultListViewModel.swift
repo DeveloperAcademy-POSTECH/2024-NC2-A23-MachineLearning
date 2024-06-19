@@ -23,9 +23,10 @@ enum Emotions: String, CaseIterable{
 
 class ResultListViewModel: ObservableObject{
     @Published var chosenImage: UIImage?
+    var chosenEmotion: Emotions?
     
-    var emotionDictionary = [0: "neutral", 1: "happiness", 2: "surprise", 3: "sadness",
-                             4: "anger", 5: "disgust", 6: "fear"]
+    var emotionDictionary = [0: Emotions.neutral, 1: Emotions.happiness, 2: Emotions.surprise, 3: Emotions.sadness,
+                             4: Emotions.anger, 5: Emotions.disgust, 6: Emotions.fear]
     
     // MARK: GETTING CLASSIFICATION OUTPUT FROM MODEL AFTER INPUTTING IMAGE DATA
     func performRequest(){
@@ -45,11 +46,31 @@ class ResultListViewModel: ObservableObject{
             let predictionArray = convertToArray(prediction.var_267)
             let probabilities = softmax(predictionArray)
             var resultString = ""
+            
+            guard let emotion = chosenEmotion else {return}
+            var chosenEmotionProbabilityIndex = emotionDictionary.first(where: {$0.value == emotion})?.key
+            guard let index = chosenEmotionProbabilityIndex else {return}
+            let chosenEmotionProbability = probabilities[index]
+            
+            var nextMaxProbability = chosenEmotionProbability
+            var nextMaxProbabilityIndex = index
             for i in 0..<probabilities.count{
-                guard let emotion = emotionDictionary[i] else {return}
-                let percent = Double(round(1000 * probabilities[i]) / 10)
-                resultString += "\(emotion): \(percent)% \n"
+                guard i != index else {return}
+                
+                if probabilities[i] > nextMaxProbability{
+                    nextMaxProbability = probabilities[i]
+                    nextMaxProbabilityIndex = i
+                }
             }
+            var nextEmotion = emotionDictionary[nextMaxProbabilityIndex]
+            
+            //convert the probabilities into appropriate format and place them into a
+            
+//            for i in 0..<probabilities.count{
+//                guard let emotion = emotionDictionary[i] else {return}
+//                let percent = Double(round(1000 * probabilities[i]) / 10)
+//                resultString += "\(emotion): \(percent)% \n"
+//            }
         } catch{
             print("error: \(error)")
         }
