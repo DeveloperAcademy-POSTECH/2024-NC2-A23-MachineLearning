@@ -10,56 +10,58 @@ import AVFoundation
 
 struct CameraView: View {
     @EnvironmentObject var cameraVM: CameraViewModel
+    @EnvironmentObject var router: Router
     
     @State var imageTaken: UIImage?
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                if let imageTaken{
-                    Image(uiImage: imageTaken)
-                }else{
-                    CameraPreviewView(session: cameraVM.captureSession, gravity: .resizeAspectFill)
+        VStack {
+            if let imageTaken{
+                Image(uiImage: imageTaken)
+            }else{
+                CameraPreviewView(session: cameraVM.captureSession, gravity: .resizeAspectFill)
+            }
+            HStack {
+                Button{
+                    print("say cheese")
+                    cameraVM.takePhoto()
+                }label:{
+                    Text("Take Photo")
                 }
-                HStack {
+                
+                if cameraVM.currentNum == cameraVM.numPeople{
                     Button{
-                        print("say cheese")
-                        cameraVM.takePhoto()
+                        //move to resultlist page
                     }label:{
-                        Text("Take Photo")
+                        Text("결과보기")
                     }
-                    
-                    if cameraVM.currentNum == cameraVM.numPeople{
-                        Button{
-                            //move to resultlist page
-                        }label:{
-                            Text("결과보기")
-                        }
-                    }else{
-                        Button{
-                            cameraVM.retakePhoto()
-                        }label:{
-                            Text("다음사람")
-                        }
+                }else{
+                    Button{
+                        cameraVM.retakePhoto()
+                    }label:{
+                        Text("다음사람")
                     }
-                    NavigationLink(destination: ContentView(image: cameraVM.currentPhoto)){
-                        Text("See photo")
-                    }
-                    
                 }
-            }.task{
-                do{
-                    switch await cameraVM.checkCaptureAuthorizationStatus() {
-                    case .permitted:
-                        try cameraVM.setupCaptureSession()
-                    case .notPermitted:
-                        break
-                    }
-                } catch {
-                    print("Unable to setup")
+                NavigationLink(destination: ContentView(image: cameraVM.currentPhoto)){
+                    Text("See photo")
                 }
+                
+            }
+        }.task{
+            print("cameraView")
+            print(router.path)
+            do{
+                switch await cameraVM.checkCaptureAuthorizationStatus() {
+                case .permitted:
+                    try cameraVM.setupCaptureSession()
+                case .notPermitted:
+                    break
+                }
+            } catch {
+                print("Unable to setup")
+            }
         }
-        }
+        
     }
 }
 
