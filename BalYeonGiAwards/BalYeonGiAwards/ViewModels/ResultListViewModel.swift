@@ -24,6 +24,7 @@ enum Emotions: String, CaseIterable{
 class ResultListViewModel: ObservableObject{
     @Published var chosenImage: UIImage?
     var chosenEmotion: Emotions?
+    var results = [Result]() //might need to bind this
     
     var emotionDictionary = [0: Emotions.neutral, 1: Emotions.happiness, 2: Emotions.surprise, 3: Emotions.sadness,
                              4: Emotions.anger, 5: Emotions.disgust, 6: Emotions.fear]
@@ -64,13 +65,13 @@ class ResultListViewModel: ObservableObject{
             }
             var nextEmotion = emotionDictionary[nextMaxProbabilityIndex]
             
-            //convert the probabilities into appropriate format and place them into a
+            guard let firstEmotion = chosenEmotion,
+                    let secondEmotion = nextEmotion,
+                    let image = chosenImage else {return}
+            var result = Result(image: image, firstResult: (firstEmotion, roundedProbability(from: chosenEmotionProbability)), secondResult: (secondEmotion, roundedProbability(from: nextMaxProbability)))
             
-//            for i in 0..<probabilities.count{
-//                guard let emotion = emotionDictionary[i] else {return}
-//                let percent = Double(round(1000 * probabilities[i]) / 10)
-//                resultString += "\(emotion): \(percent)% \n"
-//            }
+            results.append(result)
+            
         } catch{
             print("error: \(error)")
         }
@@ -118,15 +119,17 @@ class ResultListViewModel: ObservableObject{
         return expScores.map{$0 / sumExpScores}
     }
     
-    private func roundedProbability(from originalNum: Double) -> String{
+    // MARK: ROUNDING UP PROBABILITY
+    private func roundedProbability(from originalNum: Double) -> Double{
         var formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
         let value = originalNum * 100
         if let formattedString = formatter.string(for: value) {
-            return "\(formattedString)%"
+            guard let result = Double(formattedString) else {return 0.0}
+            return result
         }
-        return ""
+        return 0.0
     }
 }
 
