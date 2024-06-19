@@ -24,18 +24,13 @@ struct RandomEmotionView: View {
                         .font(.custom("HSSanTokki2.0-Regular", size: 40))
                         .foregroundStyle(.white)
                         .padding(.bottom, 106)
-                    Button{
-                        router.push(.EmotionResultView)
-                    }label:{
-                        Text("here")
-                    }
                 }
             }
             .navigationDestination(for: Router.Destination.self){destination in
                 router.view(for: destination)
             }
             .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                     print("hello")
                     router.push(.EmotionResultView)
                 }

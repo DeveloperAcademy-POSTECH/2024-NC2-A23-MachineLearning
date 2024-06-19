@@ -14,6 +14,7 @@ struct EmotionResultView: View {
         Text(chosenEmotion?.rawValue ?? "None")
             .onAppear(){
                 chosenEmotion = Emotions.allCases.randomElement()
+                print(chosenEmotion?.rawValue)
             }
     }
     
