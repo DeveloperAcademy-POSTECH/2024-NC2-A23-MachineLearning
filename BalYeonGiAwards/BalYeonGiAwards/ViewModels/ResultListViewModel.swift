@@ -11,6 +11,16 @@ import SwiftUI
 import CoreML
 import AVFoundation
 
+enum Emotions: String{
+    case neutral = "무표정"
+    case happiness = "기쁨"
+    case surprise = "놀람"
+    case sadness = "슬픔"
+    case anger = "화남"
+    case disgust = "혐오"
+    case fear = "두려움"
+}
+
 class ResultListViewModel: ObservableObject{
     @Published var chosenImage: UIImage?
     
