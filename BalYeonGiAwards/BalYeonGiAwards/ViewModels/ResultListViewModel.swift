@@ -22,16 +22,27 @@ enum Emotions: String, CaseIterable{
 }
 
 class ResultListViewModel: ObservableObject{
-    @Published var chosenImage: UIImage?
+    private var chosenImage: UIImage?
     var chosenEmotion: Emotions?
-    var thisResult: Result?
+    var imageList: [UIImage]?
     var results = [Result]() //might need to bind this
     
     var emotionDictionary = [0: Emotions.neutral, 1: Emotions.happiness, 2: Emotions.surprise, 3: Emotions.sadness,
                              4: Emotions.anger, 5: Emotions.disgust, 6: Emotions.fear]
+    // MARK: CLASSIFY ALL PROVIDED IMAGES
+    func calculateAllResults() async {
+        guard let allImages = imageList else {
+            print("List of images not found. Check and ensure image list is assigned to view model")
+            return
+        }
+        for image in allImages{
+            chosenImage = image
+            await performRequest()
+        }
+    }
     
     // MARK: GETTING CLASSIFICATION OUTPUT FROM MODEL AFTER INPUTTING IMAGE DATA
-    func performRequest() async{
+    private func performRequest() async{
         guard let uiImage = chosenImage else{
             print("No Image")
             return
@@ -82,8 +93,6 @@ class ResultListViewModel: ObservableObject{
             let result = Result(image: image, firstResult: (firstEmotion, roundedProbability(from: chosenEmotionProbability)), secondResult: (secondEmotion, roundedProbability(from: nextMaxProbability)))
             
             results.append(result)
-            thisResult = result
-            
         } catch{
             print("error: \(error)")
         }

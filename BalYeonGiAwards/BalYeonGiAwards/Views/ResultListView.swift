@@ -15,12 +15,12 @@ struct ResultListView: View {
     var body: some View {
         Text("first: \(firstProbability), second \(secondEmotion): \(secondProbability)")
             .task{
-                resultVM.chosenImage = UIImage(named: "angry")
+                resultVM.imageList = [UIImage(named: "happy")!, UIImage(named: "angry")!] // change later
                 resultVM.chosenEmotion = Emotions.anger
-                await resultVM.performRequest()
-                firstProbability = resultVM.results[0].firstResult.probability
-                secondProbability = resultVM.results[0].secondResult.probability
-                secondEmotion = resultVM.results[0].secondResult.emotion.rawValue
+                await resultVM.calculateAllResults()
+                firstProbability = resultVM.results[1].firstResult.probability
+                secondProbability = resultVM.results[1].secondResult.probability
+                secondEmotion = resultVM.results[1].secondResult.emotion.rawValue
             }
     }
 }
