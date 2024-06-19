@@ -24,13 +24,14 @@ enum Emotions: String, CaseIterable{
 class ResultListViewModel: ObservableObject{
     @Published var chosenImage: UIImage?
     var chosenEmotion: Emotions?
+    var thisResult: Result?
     var results = [Result]() //might need to bind this
     
     var emotionDictionary = [0: Emotions.neutral, 1: Emotions.happiness, 2: Emotions.surprise, 3: Emotions.sadness,
                              4: Emotions.anger, 5: Emotions.disgust, 6: Emotions.fear]
     
     // MARK: GETTING CLASSIFICATION OUTPUT FROM MODEL AFTER INPUTTING IMAGE DATA
-    func performRequest(){
+    func performRequest() async{
         guard let uiImage = chosenImage else{
             print("No Image")
             return
@@ -42,35 +43,46 @@ class ResultListViewModel: ObservableObject{
             return
         }
         do{
-            let prediction = try mlModel.prediction(input: ModelNewInput(input: multiArray))
+            let prediction = try await mlModel.prediction(input: ModelNewInput(input: multiArray))
             print(prediction.var_267)
             let predictionArray = convertToArray(prediction.var_267)
             let probabilities = softmax(predictionArray)
             var resultString = ""
             
-            guard let emotion = chosenEmotion else {return}
-            var chosenEmotionProbabilityIndex = emotionDictionary.first(where: {$0.value == emotion})?.key
-            guard let index = chosenEmotionProbabilityIndex else {return}
+            guard let emotion = chosenEmotion else {
+                print("Emotion is unavailable")
+                return
+            }
+            let chosenEmotionProbabilityIndex = emotionDictionary.first(where: {$0.value == emotion})?.key
+            guard let index = chosenEmotionProbabilityIndex else {
+                print("Error: index of emotion not found")
+                return
+            }
             let chosenEmotionProbability = probabilities[index]
             
             var nextMaxProbability = chosenEmotionProbability
             var nextMaxProbabilityIndex = index
             for i in 0..<probabilities.count{
-                guard i != index else {return}
+                guard i != index else {continue}
                 
                 if probabilities[i] > nextMaxProbability{
                     nextMaxProbability = probabilities[i]
                     nextMaxProbabilityIndex = i
                 }
             }
-            var nextEmotion = emotionDictionary[nextMaxProbabilityIndex]
+            let nextEmotion = emotionDictionary[nextMaxProbabilityIndex]
             
             guard let firstEmotion = chosenEmotion,
                     let secondEmotion = nextEmotion,
-                    let image = chosenImage else {return}
-            var result = Result(image: image, firstResult: (firstEmotion, roundedProbability(from: chosenEmotionProbability)), secondResult: (secondEmotion, roundedProbability(from: nextMaxProbability)))
+                    let image = chosenImage else 
+            {
+                print("Emotions or image missing")
+                return
+            }
+            let result = Result(image: image, firstResult: (firstEmotion, roundedProbability(from: chosenEmotionProbability)), secondResult: (secondEmotion, roundedProbability(from: nextMaxProbability)))
             
             results.append(result)
+            thisResult = result
             
         } catch{
             print("error: \(error)")
