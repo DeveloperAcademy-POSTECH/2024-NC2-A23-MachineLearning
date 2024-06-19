@@ -11,7 +11,7 @@ import SwiftUI
 import CoreML
 import AVFoundation
 
-enum Emotions: String{
+enum Emotions: String, CaseIterable{
     case neutral = "무표정"
     case happiness = "기쁨"
     case surprise = "놀람"
