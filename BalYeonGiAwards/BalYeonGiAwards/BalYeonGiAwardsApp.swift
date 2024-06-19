@@ -16,7 +16,8 @@ struct BalYeonGiAwardsApp: App {
 //            CameraView()
 //                .environmentObject(cameraVM)
 //            EmotionResultView()
-            ResultListView()
+//            ResultListView()
+            RandomEmotionView()
         }
     }
 }
