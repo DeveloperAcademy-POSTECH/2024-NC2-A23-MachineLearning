@@ -22,14 +22,27 @@ enum Emotions: String, CaseIterable{
 }
 
 class ResultListViewModel: ObservableObject{
-    @Published var chosenImage: UIImage?
+    private var chosenImage: UIImage?
     var chosenEmotion: Emotions?
+    var imageList: [UIImage]?
+    var results = [Result]() //might need to bind this
     
     var emotionDictionary = [0: Emotions.neutral, 1: Emotions.happiness, 2: Emotions.surprise, 3: Emotions.sadness,
                              4: Emotions.anger, 5: Emotions.disgust, 6: Emotions.fear]
+    // MARK: CLASSIFY ALL PROVIDED IMAGES
+    func calculateAllResults() async {
+        guard let allImages = imageList else {
+            print("List of images not found. Check and ensure image list is assigned to view model")
+            return
+        }
+        for image in allImages{
+            chosenImage = image
+            await performRequest()
+        }
+    }
     
     // MARK: GETTING CLASSIFICATION OUTPUT FROM MODEL AFTER INPUTTING IMAGE DATA
-    func performRequest(){
+    private func performRequest() async{
         guard let uiImage = chosenImage else{
             print("No Image")
             return
@@ -41,36 +54,45 @@ class ResultListViewModel: ObservableObject{
             return
         }
         do{
-            let prediction = try mlModel.prediction(input: ModelNewInput(input: multiArray))
+            let prediction = try await mlModel.prediction(input: ModelNewInput(input: multiArray))
             print(prediction.var_267)
             let predictionArray = convertToArray(prediction.var_267)
             let probabilities = softmax(predictionArray)
             var resultString = ""
             
-            guard let emotion = chosenEmotion else {return}
-            var chosenEmotionProbabilityIndex = emotionDictionary.first(where: {$0.value == emotion})?.key
-            guard let index = chosenEmotionProbabilityIndex else {return}
+            guard let emotion = chosenEmotion else {
+                print("Emotion is unavailable")
+                return
+            }
+            let chosenEmotionProbabilityIndex = emotionDictionary.first(where: {$0.value == emotion})?.key
+            guard let index = chosenEmotionProbabilityIndex else {
+                print("Error: index of emotion not found")
+                return
+            }
             let chosenEmotionProbability = probabilities[index]
             
             var nextMaxProbability = chosenEmotionProbability
             var nextMaxProbabilityIndex = index
             for i in 0..<probabilities.count{
-                guard i != index else {return}
+                guard i != index else {continue}
                 
                 if probabilities[i] > nextMaxProbability{
                     nextMaxProbability = probabilities[i]
                     nextMaxProbabilityIndex = i
                 }
             }
-            var nextEmotion = emotionDictionary[nextMaxProbabilityIndex]
+            let nextEmotion = emotionDictionary[nextMaxProbabilityIndex]
             
-            //convert the probabilities into appropriate format and place them into a
+            guard let firstEmotion = chosenEmotion,
+                    let secondEmotion = nextEmotion,
+                    let image = chosenImage else 
+            {
+                print("Emotions or image missing")
+                return
+            }
+            let result = Result(image: image, firstResult: (firstEmotion, roundedProbability(from: chosenEmotionProbability)), secondResult: (secondEmotion, roundedProbability(from: nextMaxProbability)))
             
-//            for i in 0..<probabilities.count{
-//                guard let emotion = emotionDictionary[i] else {return}
-//                let percent = Double(round(1000 * probabilities[i]) / 10)
-//                resultString += "\(emotion): \(percent)% \n"
-//            }
+            results.append(result)
         } catch{
             print("error: \(error)")
         }
@@ -118,15 +140,17 @@ class ResultListViewModel: ObservableObject{
         return expScores.map{$0 / sumExpScores}
     }
     
-    private func roundedProbability(from originalNum: Double) -> String{
+    // MARK: ROUNDING UP PROBABILITY
+    private func roundedProbability(from originalNum: Double) -> Double{
         var formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
         let value = originalNum * 100
         if let formattedString = formatter.string(for: value) {
-            return "\(formattedString)%"
+            guard let result = Double(formattedString) else {return 0.0}
+            return result
         }
-        return ""
+        return 0.0
     }
 }
 
