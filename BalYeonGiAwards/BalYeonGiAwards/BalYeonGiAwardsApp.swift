@@ -13,8 +13,9 @@ struct BalYeonGiAwardsApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            CameraView()
-                .environmentObject(cameraVM)
+//            CameraView()
+//                .environmentObject(cameraVM)
+            EmotionResultView()
         }
     }
 }
