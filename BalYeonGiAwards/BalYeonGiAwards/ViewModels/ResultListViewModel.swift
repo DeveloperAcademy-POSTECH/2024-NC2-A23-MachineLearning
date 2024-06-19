@@ -117,6 +117,17 @@ class ResultListViewModel: ObservableObject{
         let sumExpScores = expScores.reduce(0, +)
         return expScores.map{$0 / sumExpScores}
     }
+    
+    private func roundedProbability(from originalNum: Double) -> String{
+        var formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        let value = originalNum * 100
+        if let formattedString = formatter.string(for: value) {
+            return "\(formattedString)%"
+        }
+        return ""
+    }
 }
 
 extension UIImage{
