@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RandomEmotionView: View {
-    @ObservedObject var router = Router()
+    @EnvironmentObject var router: Router
     
     var body: some View {
         NavigationStack(path: $router.path){

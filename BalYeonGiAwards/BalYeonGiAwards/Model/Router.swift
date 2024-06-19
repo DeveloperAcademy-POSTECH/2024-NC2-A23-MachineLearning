@@ -14,6 +14,7 @@ class Router: ObservableObject{
     enum Destination: Hashable{
         case EmotionResultView
         case RandomEmotionView
+        case CameraView
     }
     
     @ViewBuilder func view(for route: Destination) -> some View{
@@ -22,6 +23,8 @@ class Router: ObservableObject{
             EmotionResultView()
         case .RandomEmotionView:
             RandomEmotionView()
+        case .CameraView:
+            CameraView()
         }
     }
     

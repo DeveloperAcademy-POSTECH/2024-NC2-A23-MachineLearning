@@ -9,7 +9,9 @@ import SwiftUI
 
 @main
 struct BalYeonGiAwardsApp: App {
-    var cameraVM = CameraViewModel()
+    @StateObject var cameraVM = CameraViewModel()
+    @StateObject var router = Router()
+    
     var body: some Scene {
         WindowGroup {
 //            ContentView()
@@ -18,6 +20,8 @@ struct BalYeonGiAwardsApp: App {
 //            EmotionResultView()
 //            ResultListView()
             RandomEmotionView()
+                .environmentObject(router)
+                .environmentObject(cameraVM)
         }
     }
 }
