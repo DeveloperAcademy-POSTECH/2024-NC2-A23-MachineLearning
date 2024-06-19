@@ -10,6 +10,7 @@ import SwiftUI
 struct EmotionResultView: View {
     @State var chosenEmotion: Emotions?
     @EnvironmentObject var router: Router
+    @EnvironmentObject var resultListVM: ResultListViewModel
     
     var body: some View {
         ZStack{
@@ -74,6 +75,7 @@ struct EmotionResultView: View {
         }
         .onAppear(){
             chosenEmotion = Emotions.allCases.randomElement()
+            resultListVM.chosenEmotion = chosenEmotion
         }
     }
     
