@@ -53,7 +53,9 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
                 captureSession.addOutput(output)
             }
             captureSession.sessionPreset = .photo
-            captureSession.startRunning()
+            DispatchQueue.global(qos: .background).async {
+                self.captureSession.startRunning()
+            }
         }
     }
     func takePhoto(){
@@ -71,7 +73,7 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: (any Error)?) {
         if error != nil{
-            print("error whil take photo: \(error)")
+            print("Error while taking photo: \(error)")
             return
         }
         DispatchQueue.global(qos:.background).async{
