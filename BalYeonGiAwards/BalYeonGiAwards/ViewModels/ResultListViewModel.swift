@@ -26,6 +26,7 @@ class ResultListViewModel: ObservableObject{
     var chosenEmotion: Emotions?
     var imageList: [UIImage]?
     var results = [Result]() //might need to bind this
+    @Published var winner: Result?
     
     var emotionDictionary = [0: Emotions.neutral, 1: Emotions.happiness, 2: Emotions.surprise, 3: Emotions.sadness,
                              4: Emotions.anger, 5: Emotions.disgust, 6: Emotions.fear]

@@ -33,7 +33,7 @@ struct AnalyzeResultsView: View {
                 VStack(alignment: .center){
                     Image("Trophy 1")
                         .ignoresSafeArea()
-                        .scaledToFit()
+                        .scaledToFill()
                         .frame(height: 616)
                     Text("이번 발연기 대상의\n주인공은..")
                         .font(.custom("HSSanTokki2.0-Regular", size: 40))
@@ -51,7 +51,7 @@ struct AnalyzeResultsView: View {
                 showTrophy = true
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3){
-                print("next view")
+                router.push(.WinnerView)
             }
         }
     }

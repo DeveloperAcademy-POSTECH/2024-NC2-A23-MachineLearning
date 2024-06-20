@@ -32,6 +32,7 @@
 		6B93110C2C23CA8B00A1F361 /* AnalyzeResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B93110B2C23CA8B00A1F361 /* AnalyzeResultsView.swift */; };
 		6B93110E2C23CB9200A1F361 /* AnalyzingResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 6B93110D2C23CB9200A1F361 /* AnalyzingResults.json */; };
 		6B9311142C23D04E00A1F361 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9311132C23D04E00A1F361 /* Lottie */; };
+		6B9311162C23D13800A1F361 /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9311152C23D13800A1F361 /* WinnerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		6B9311032C22F2B200A1F361 /* AllPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPhotosView.swift; sourceTree = "<group>"; };
 		6B93110B2C23CA8B00A1F361 /* AnalyzeResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeResultsView.swift; sourceTree = "<group>"; };
 		6B93110D2C23CB9200A1F361 /* AnalyzingResults.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AnalyzingResults.json; sourceTree = "<group>"; };
+		6B9311152C23D13800A1F361 /* WinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				6B9310D52C21768B00A1F361 /* CameraView.swift */,
 				6B9311032C22F2B200A1F361 /* AllPhotosView.swift */,
 				6B93110B2C23CA8B00A1F361 /* AnalyzeResultsView.swift */,
+				6B9311152C23D13800A1F361 /* WinnerView.swift */,
 				6B9310E32C227F1E00A1F361 /* ResultListView.swift */,
 			);
 			path = Views;
@@ -362,6 +365,7 @@
 				6B9310E42C227F1E00A1F361 /* ResultListView.swift in Sources */,
 				6B9310F42C22AB0E00A1F361 /* RandomEmotionView.swift in Sources */,
 				6B9310D22C21674B00A1F361 /* ResultListViewModel.swift in Sources */,
+				6B9311162C23D13800A1F361 /* WinnerView.swift in Sources */,
 				6B9310DC2C21816300A1F361 /* CameraPreviewView.swift in Sources */,
 				6B9310D62C21768B00A1F361 /* CameraView.swift in Sources */,
 				6B9310A62C21531300A1F361 /* BalYeonGiAwardsApp.swift in Sources */,
