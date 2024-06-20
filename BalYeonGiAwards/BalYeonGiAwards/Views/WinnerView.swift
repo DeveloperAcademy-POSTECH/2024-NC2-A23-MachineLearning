@@ -42,7 +42,7 @@ struct WinnerView: View {
                         .foregroundStyle(.white)
                         .padding(.bottom, 121)
                     Button{
-                        
+                        router.push(.ResultListView)
                     }label:{
                         HStack{
                             Text("결과 분석")
@@ -63,7 +63,7 @@ struct WinnerView: View {
         }
         .navigationBarBackButtonHidden()
         .onAppear(){
-            resultVM.winner = resultVM.results.max()
+            resultVM.winner = resultVM.results.min()
         }
     }
 }

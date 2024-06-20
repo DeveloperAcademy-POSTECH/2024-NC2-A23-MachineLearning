@@ -19,6 +19,25 @@ enum Emotions: String, CaseIterable{
     case anger = "화남"
     case disgust = "혐오"
     case fear = "두려움"
+    
+    func barColor() -> Color{
+        switch self{
+        case .neutral:
+            Color.teal
+        case .happiness:
+            Color.purple
+        case .surprise:
+            Color.yellow
+        case .sadness:
+            Color.blue
+        case .anger:
+            Color.red
+        case .disgust:
+            Color.green
+        case .fear:
+            Color.indigo
+        }
+    }
 }
 
 class ResultListViewModel: ObservableObject{
@@ -42,6 +61,10 @@ class ResultListViewModel: ObservableObject{
             await performRequest()
             print("finish analyzing")
         }
+    }
+    
+    func restartProcess(){
+        results = []
     }
     
     // MARK: GETTING CLASSIFICATION OUTPUT FROM MODEL AFTER INPUTTING IMAGE DATA
@@ -94,7 +117,6 @@ class ResultListViewModel: ObservableObject{
                 return
             }
             let result = Result(image: image, firstResult: (firstEmotion, roundedProbability(from: chosenEmotionProbability)), secondResult: (secondEmotion, roundedProbability(from: nextMaxProbability)))
-            
             results.append(result)
         } catch{
             print("error: \(error)")

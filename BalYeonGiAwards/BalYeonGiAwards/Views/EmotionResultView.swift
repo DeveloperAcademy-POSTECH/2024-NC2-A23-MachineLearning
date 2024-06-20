@@ -50,7 +50,6 @@ struct EmotionResultView: View {
                 }.padding(.top, 24)
                 Spacer()
                 Button{
-//                    router.push(.CameraView)
                     showingSheet.toggle()
                 }label:{
                     ZStack{
