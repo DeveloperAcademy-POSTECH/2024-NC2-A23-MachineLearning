@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct AllPhotosView: View {
+    @EnvironmentObject var cameraVM: CameraViewModel
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            .onAppear(){
+                print("\(cameraVM.photos)")
+            }
     }
 }
 

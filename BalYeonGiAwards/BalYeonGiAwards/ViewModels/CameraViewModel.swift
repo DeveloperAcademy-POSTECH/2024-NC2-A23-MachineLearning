@@ -151,12 +151,16 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
                 }else{
                     self.currentState = .nextPerson
                 }
+                print("Picture taken: \(currentPhoto)")
                 if let image = currentPhoto{
         //            photos[currentNum] = image // revisit this logic
+                    if currentNum == 0{
+                        photos = []
+                    }
+                    photos.append(image)
                 }
             }
         }
 //        currentNum += 1
-        print("Picture taken: \(currentPhoto)")
     }
 }
