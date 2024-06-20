@@ -29,8 +29,11 @@ struct CameraView: View {
                 .foregroundStyle(.gray)
                 .font(.system(size: 18))
                 .padding(.bottom, 22)
-            if let imageTaken{
+            if let imageTaken = cameraVM.currentPhoto {
                 Image(uiImage: imageTaken)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width)
             }else{
                 CameraPreviewView(session: cameraVM.captureSession, gravity: .resizeAspectFill)
             }

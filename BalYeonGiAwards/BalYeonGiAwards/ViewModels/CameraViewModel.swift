@@ -107,8 +107,8 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
     
     func retakePhoto(){
         DispatchQueue.global(qos: .background).async{
-            self.captureSession.startRunning() //abit of lag here
             DispatchQueue.main.async {
+                self.currentPhoto = nil
                 self.currentState = .takePhoto
                 self.currentNum += 1
             }
@@ -122,28 +122,34 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
         }
         
         DispatchQueue.global(qos: .background).async{ [self] in
+            
             guard let imageData = photo.fileDataRepresentation() else {
                 print("Error while generating image from photo capture data.");
                 return
             }
             
-            guard let uiImage = UIImage(data: imageData) else {
+            guard var uiImage = UIImage(data: imageData) else {
                 print("Unable to generate UIImage from image data.");
                 return
             }
+            
             let imageWidth = uiImage.size.width
             let imageHeight = uiImage.size.height
             let cropLength = min(imageWidth, imageHeight)
             
             let cropRect = CGRect(
-                x: (imageWidth - cropLength) / 2,
-                y: (imageHeight - cropLength) / 2,
+                x: 0,
+                y: 0,
                 width: cropLength,
                 height: cropLength
             )
-            guard let cgImage = uiImage.cgImage?.cropping(to: cropRect) else { return }
-            let croppedImage = UIImage(cgImage: cgImage, scale: uiImage.scale, orientation: uiImage.imageOrientation)
-            self.captureSession.stopRunning()
+            
+            guard let cgImage = uiImage.cgImage?.cropping(to: cropRect) else {
+                print("Issues with crop")
+                return
+            }
+            let croppedImage = UIImage(cgImage: cgImage, scale: uiImage.scale, orientation: .leftMirrored)
+            
             DispatchQueue.main.async{ [self] in
                 self.currentPhoto = croppedImage
                 if self.currentNum + 1 == self.numPeople{
@@ -153,7 +159,6 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
                 }
                 print("Picture taken: \(currentPhoto)")
                 if let image = currentPhoto{
-        //            photos[currentNum] = image // revisit this logic
                     if currentNum == 0{
                         photos = []
                     }
@@ -161,6 +166,5 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
                 }
             }
         }
-//        currentNum += 1
     }
 }
