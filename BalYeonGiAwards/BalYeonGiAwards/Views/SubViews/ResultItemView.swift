@@ -24,7 +24,7 @@ struct ResultItemView: View {
                     .foregroundStyle(.white)
             }
             HStack{
-                Text(result.firstResult.emotion.rawValue)
+                Text(result.firstResult.emotion.justText())
                     .fontWeight(.semibold)
                     .foregroundStyle(.gray)
                     .frame(width: 50)
@@ -40,7 +40,7 @@ struct ResultItemView: View {
                 
             }
             HStack{
-                Text(result.secondResult.emotion.rawValue)
+                Text(result.secondResult.emotion.justText())
                     .fontWeight(.semibold)
                     .foregroundStyle(.gray)
                     .frame(width: 50)
