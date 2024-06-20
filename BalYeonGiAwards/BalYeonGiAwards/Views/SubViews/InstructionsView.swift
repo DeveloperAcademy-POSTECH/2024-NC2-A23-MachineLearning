@@ -55,6 +55,7 @@ struct InstructionsView: View {
                             .foregroundStyle(.white)
                     }
                 }
+                .padding(.bottom, 70)
             }
         }
     }

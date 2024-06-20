@@ -47,10 +47,10 @@ struct AnalyzeResultsView: View {
         .task{
             resultVM.imageList = cameraVM.photos // change later
             await resultVM.calculateAllResults()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 showTrophy = true
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
                 router.push(.WinnerView)
             }
         }

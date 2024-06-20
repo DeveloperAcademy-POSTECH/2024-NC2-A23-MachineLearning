@@ -37,12 +37,13 @@ struct CameraView: View {
             }else{
                 CameraPreviewView(session: cameraVM.captureSession, gravity: .resizeAspectFill)
             }
-            Text("\(cameraVM.numPeople)명 중 \(cameraVM.currentNum + 1)번째 후보")
-                .foregroundStyle(.white)
-                .font(.system(size: 18))
-                .padding(.top, 18)
-            Spacer()
+            
             if cameraVM.currentState == .takePhoto{
+                Text("\(cameraVM.numPeople)명 중 \(cameraVM.currentNum + 1)번째 후보")
+                    .foregroundStyle(.white)
+                    .font(.system(size: 18))
+                    .padding(.top, 18)
+                    .offset(y:-80)
                 Button{
                     DispatchQueue.global(qos: .background).async {
                         cameraVM.takePhoto()
@@ -50,14 +51,19 @@ struct CameraView: View {
                 }label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 14)
-                            .foregroundColor(.brown)
+                            .foregroundColor(.white)
                             .frame(width:353, height: 56)
                         Text("지금이야! 연기 포착하기")
                             .fontWeight(.semibold)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.black)
                     }
-                }
+                }.padding(.bottom, 70)
             } else if cameraVM.currentState == .nextPerson{
+                Text("\(cameraVM.numPeople)명 중 \(cameraVM.currentNum + 1)번째 후보")
+                    .foregroundStyle(.white)
+                    .font(.system(size: 18))
+                    .padding(.top, 18)
+                Spacer()
                 Button{
                     DispatchQueue.global(qos: .background).async {
                         cameraVM.retakePhoto()
@@ -71,8 +77,13 @@ struct CameraView: View {
                             .fontWeight(.semibold)
                             .foregroundStyle(.white)
                     }
-                }
+                }.padding(.bottom, 70)
             }else {
+                Text("\(cameraVM.numPeople)명 중 \(cameraVM.currentNum + 1)번째 후보")
+                    .foregroundStyle(.white)
+                    .font(.system(size: 18))
+                    .padding(.top, 18)
+                Spacer()
                 Button{
                     router.push(.AllPhotosView)
                 }label: {
@@ -84,7 +95,7 @@ struct CameraView: View {
                             .fontWeight(.semibold)
                             .foregroundStyle(.white)
                     }
-                }
+                }.padding(.bottom, 70)
             }
         }
         .navigationBarBackButtonHidden()
