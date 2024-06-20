@@ -128,22 +128,27 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
                 return
             }
             
-            guard let uiImage = UIImage(data: imageData) else {
+            guard var uiImage = UIImage(data: imageData) else {
                 print("Unable to generate UIImage from image data.");
                 return
             }
+            
             let imageWidth = uiImage.size.width
             let imageHeight = uiImage.size.height
             let cropLength = min(imageWidth, imageHeight)
             
             let cropRect = CGRect(
-                x: (imageWidth - cropLength) / 2,
-                y: (imageHeight - cropLength) / 2,
+                x: 0,
+                y: 0,
                 width: cropLength,
                 height: cropLength
             )
-            guard let cgImage = uiImage.cgImage?.cropping(to: cropRect) else { return }
-            let croppedImage = UIImage(cgImage: cgImage, scale: uiImage.scale, orientation: uiImage.imageOrientation)
+            
+            guard let cgImage = uiImage.cgImage?.cropping(to: cropRect) else {
+                print("Issues with crop")
+                return
+            }
+            let croppedImage = UIImage(cgImage: cgImage, scale: uiImage.scale, orientation: .leftMirrored)
             
             DispatchQueue.main.async{ [self] in
                 self.currentPhoto = croppedImage
@@ -154,7 +159,6 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
                 }
                 print("Picture taken: \(currentPhoto)")
                 if let image = currentPhoto{
-        //            photos[currentNum] = image // revisit this logic
                     if currentNum == 0{
                         photos = []
                     }
@@ -162,6 +166,5 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
                 }
             }
         }
-//        currentNum += 1
     }
 }
