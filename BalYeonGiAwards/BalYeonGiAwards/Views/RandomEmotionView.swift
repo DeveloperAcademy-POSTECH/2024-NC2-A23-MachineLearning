@@ -19,7 +19,7 @@ struct RandomEmotionView: View {
                     Spacer()
                 }.ignoresSafeArea()
                 VStack{
-                    ChooseEmotionAnimationView(name: "animation.json")
+                    AnimationView(name: "animation.json")
                     Text("어떤 감정으로\n연기대결을\n펼치게 될까요?")
                         .font(.custom("HSSanTokki2.0-Regular", size: 40))
                         .foregroundStyle(.white)

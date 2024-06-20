@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AllPhotosView: View {
     @EnvironmentObject var cameraVM: CameraViewModel
+    @EnvironmentObject var router: Router
+    
     private let adaptiveColumn = [
         GridItem(.flexible(), spacing: 0),
         GridItem(.flexible(), spacing: 0)
@@ -38,7 +40,7 @@ struct AllPhotosView: View {
                 .frame(maxWidth: 252)
                 Spacer()
                 Button{
-                    print("Next")
+                    router.push(.AnalyzeResultsView)
                 }label:{
                     ZStack{
                         RoundedRectangle(cornerRadius: 14)
