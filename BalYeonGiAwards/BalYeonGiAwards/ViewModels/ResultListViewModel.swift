@@ -12,13 +12,13 @@ import CoreML
 import AVFoundation
 
 enum Emotions: String, CaseIterable{
-    case neutral = "무표정"
-    case happiness = "기쁨"
-    case surprise = "놀람"
-    case sadness = "슬픔"
-    case anger = "화남"
-    case disgust = "혐오"
-    case fear = "두려움"
+    case neutral = "무표정😐"
+    case happiness = "행복🥰"
+    case surprise = "놀라움😮"
+    case sadness = "슬픔😭"
+    case anger = "분노😡"
+    case disgust = "역겨움🤢"
+    case fear = "두려움😱"
     
     func barColor() -> Color{
         switch self{
@@ -36,6 +36,24 @@ enum Emotions: String, CaseIterable{
             Color.green
         case .fear:
             Color.indigo
+        }
+    }
+    func justText() -> String{
+        switch self{
+        case .neutral:
+            "무표정"
+        case .happiness:
+            "행복"
+        case .surprise:
+            "놀라움"
+        case .sadness:
+            "슬픔"
+        case .anger:
+            "분노"
+        case .disgust:
+            "역겨움"
+        case .fear:
+            "두려움"
         }
     }
 }
