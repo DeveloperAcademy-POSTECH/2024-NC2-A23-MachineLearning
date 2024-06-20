@@ -31,8 +31,8 @@
 		6B9311042C22F2B200A1F361 /* AllPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9311032C22F2B200A1F361 /* AllPhotosView.swift */; };
 		6B93110C2C23CA8B00A1F361 /* AnalyzeResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B93110B2C23CA8B00A1F361 /* AnalyzeResultsView.swift */; };
 		6B93110E2C23CB9200A1F361 /* AnalyzingResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 6B93110D2C23CB9200A1F361 /* AnalyzingResults.json */; };
-		6B9311142C23D04E00A1F361 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9311132C23D04E00A1F361 /* Lottie */; };
 		6B9311162C23D13800A1F361 /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9311152C23D13800A1F361 /* WinnerView.swift */; };
+		6BB35C752C23F9E8000E2071 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6BB35C742C23F9E8000E2071 /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B9311142C23D04E00A1F361 /* Lottie in Frameworks */,
+				6BB35C752C23F9E8000E2071 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +234,7 @@
 			);
 			name = BalYeonGiAwards;
 			packageProductDependencies = (
-				6B9311132C23D04E00A1F361 /* Lottie */,
+				6BB35C742C23F9E8000E2071 /* Lottie */,
 			);
 			productName = BalYeonGiAwards;
 			productReference = 6B9310A22C21531300A1F361 /* BalYeonGiAwards.app */;
@@ -309,7 +309,7 @@
 			);
 			mainGroup = 6B9310992C21531300A1F361;
 			packageReferences = (
-				6B9311122C23D04E00A1F361 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				6BB35C732C23F9E8000E2071 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 6B9310A32C21531300A1F361 /* Products */;
 			projectDirPath = "";
@@ -706,7 +706,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6B9311122C23D04E00A1F361 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		6BB35C732C23F9E8000E2071 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
@@ -717,9 +717,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6B9311132C23D04E00A1F361 /* Lottie */ = {
+		6BB35C742C23F9E8000E2071 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6B9311122C23D04E00A1F361 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 6BB35C732C23F9E8000E2071 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
