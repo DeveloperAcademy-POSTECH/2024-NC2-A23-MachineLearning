@@ -12,17 +12,8 @@ struct NumberOfPeopleView: View {
     @EnvironmentObject var appState: AppState
 
     var body: some View {
+//        Text("hi")
         VStack(spacing: 20) {
-            HStack {
-                Button(action: {
-                    router.pop()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.white)
-                }
-                Spacer()
-            }
-
             Text("수상 후보는\n몇 명인가요?")
                 .font(.custom("HSSanTokki2.0-Regular", size: 44))
                 .foregroundColor(.white)
@@ -77,12 +68,23 @@ struct NumberOfPeopleView: View {
             }
             .padding(.bottom, 24)
         }
+        .navigationBarBackButtonHidden()
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading){
+                Button{
+                    // add code to pop twice/..?
+                }label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.white)
+                }
+            }
+        }
         .background(Color.black.ignoresSafeArea(edges: .all))
     }
 }
 
-#Preview {
-    NumberOfPeopleView()
-        .environmentObject(Router())
-        .environmentObject(AppState())
-}
+//#Preview {
+//    NumberOfPeopleView()
+//        .environmentObject(Router())
+//        .environmentObject(AppState())
+//}

@@ -195,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				6B9311052C23AE2300A1F361 /* SubViews */,
+				4F5C8D102C243F1C00C6F4BC /* StartView.swift */,
+				4F5C8D122C243F5300C6F4BC /* NumberOfPeopleView.swift */,
 				6B9310F32C22AB0E00A1F361 /* RandomEmotionView.swift */,
 				6B9310DD2C226FCC00A1F361 /* EmotionResultView.swift */,
 				6B9310D52C21768B00A1F361 /* CameraView.swift */,
@@ -219,8 +221,6 @@
 		6B9311052C23AE2300A1F361 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				4F5C8D102C243F1C00C6F4BC /* StartView.swift */,
-				4F5C8D122C243F5300C6F4BC /* NumberOfPeopleView.swift */,
 				6B9310F12C22AAB400A1F361 /* AnimationView.swift */,
 				6B9310FF2C22C6F200A1F361 /* InstructionsView.swift */,
 				6B9310DB2C21816300A1F361 /* CameraPreviewView.swift */,
