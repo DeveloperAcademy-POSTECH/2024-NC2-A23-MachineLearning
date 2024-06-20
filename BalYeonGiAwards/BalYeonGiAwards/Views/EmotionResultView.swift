@@ -11,7 +11,9 @@ struct EmotionResultView: View {
     @State var chosenEmotion: Emotions?
     @State var showingSheet = false
     @EnvironmentObject var router: Router
+    @EnvironmentObject var cameraVM: CameraViewModel
     @EnvironmentObject var resultListVM: ResultListViewModel
+    @EnvironmentObject var appState: AppState
     
     var body: some View {
         ZStack{
@@ -70,7 +72,8 @@ struct EmotionResultView: View {
         .toolbar{
             ToolbarItem(placement: .topBarLeading){
                 Button{
-                    // add code to pop twice/..?
+                    router.pop()
+                    router.pop()
                 }label: {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.white)
@@ -78,6 +81,7 @@ struct EmotionResultView: View {
             }
         }
         .onAppear(){
+            cameraVM.numPeople = appState.numberOfPeople
             chosenEmotion = Emotions.allCases.randomElement()
             resultListVM.chosenEmotion = chosenEmotion
         }
