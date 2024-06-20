@@ -51,6 +51,7 @@ struct ResultListView: View {
                             .foregroundStyle(.white)
                     }
                 }.padding(.leading, 20)
+                    .padding(.bottom, 70)
             }
         }
         .navigationBarBackButtonHidden()

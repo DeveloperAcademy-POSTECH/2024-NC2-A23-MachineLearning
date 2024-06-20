@@ -60,7 +60,7 @@ struct EmotionResultView: View {
                             .fontWeight(.semibold)
                             .foregroundStyle(.white)
                     }
-                }
+                }.padding(.bottom, 70)
             }
         }
         .sheet(isPresented: $showingSheet){

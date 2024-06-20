@@ -212,8 +212,8 @@
 		6B9311052C23AE2300A1F361 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				6B9310FF2C22C6F200A1F361 /* InstructionsView.swift */,
 				6B9310F12C22AAB400A1F361 /* AnimationView.swift */,
+				6B9310FF2C22C6F200A1F361 /* InstructionsView.swift */,
 				6B9310DB2C21816300A1F361 /* CameraPreviewView.swift */,
 				6BB35C762C23FB5F000E2071 /* ResultItemView.swift */,
 			);
