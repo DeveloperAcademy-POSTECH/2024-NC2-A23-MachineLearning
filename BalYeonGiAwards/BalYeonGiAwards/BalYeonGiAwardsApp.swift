@@ -12,6 +12,7 @@ struct BalYeonGiAwardsApp: App {
     @StateObject var cameraVM = CameraViewModel()
     @StateObject var router = Router()
     @StateObject var resultListVM = ResultListViewModel()
+    @StateObject private var appState = AppState()
     
     var body: some Scene {
         WindowGroup {
@@ -24,6 +25,7 @@ struct BalYeonGiAwardsApp: App {
                 .environmentObject(router)
                 .environmentObject(cameraVM)
                 .environmentObject(resultListVM)
+                .environmentObject(appState)
         }
     }
 }

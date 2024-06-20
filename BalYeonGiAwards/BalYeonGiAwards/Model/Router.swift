@@ -18,6 +18,8 @@ class Router: ObservableObject{
         case AllPhotosView
         case AnalyzeResultsView
         case WinnerView
+        case StartView
+        case NumberOfPeopleView
         case ResultListView
     }
     
@@ -35,7 +37,11 @@ class Router: ObservableObject{
             AnalyzeResultsView()
         case .WinnerView:
             WinnerView()
-        case .ResultListView:
+        case.NumberOfPeopleView:
+            NumberOfPeopleView()
+        case.StartView:
+            StartView()
+        case.ResultListView:
             ResultListView()
         }
     }
@@ -51,3 +57,4 @@ class Router: ObservableObject{
         self.path = NavigationPath()
     }
 }
+
