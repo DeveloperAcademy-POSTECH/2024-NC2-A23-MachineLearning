@@ -11,6 +11,7 @@ import SwiftUI
 struct BalYeonGiAwardsApp: App {
     @StateObject var cameraVM = CameraViewModel()
     @StateObject var router = Router()
+    @StateObject var resultListVM = ResultListViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -22,6 +23,7 @@ struct BalYeonGiAwardsApp: App {
             RandomEmotionView()
                 .environmentObject(router)
                 .environmentObject(cameraVM)
+                .environmentObject(resultListVM)
         }
     }
 }

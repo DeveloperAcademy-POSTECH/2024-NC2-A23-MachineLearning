@@ -15,6 +15,7 @@ class Router: ObservableObject{
         case EmotionResultView
         case RandomEmotionView
         case CameraView
+        case AllPhotosView
     }
     
     @ViewBuilder func view(for route: Destination) -> some View{
@@ -25,6 +26,8 @@ class Router: ObservableObject{
             RandomEmotionView()
         case .CameraView:
             CameraView()
+        case .AllPhotosView:
+            AllPhotosView()
         }
     }
     

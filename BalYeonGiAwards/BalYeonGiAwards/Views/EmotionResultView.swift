@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EmotionResultView: View {
     @State var chosenEmotion: Emotions?
+    @State var showingSheet = false
     @EnvironmentObject var router: Router
     @EnvironmentObject var resultListVM: ResultListViewModel
     
@@ -49,7 +50,8 @@ struct EmotionResultView: View {
                 }.padding(.top, 24)
                 Spacer()
                 Button{
-                    router.push(.CameraView)
+//                    router.push(.CameraView)
+                    showingSheet.toggle()
                 }label:{
                     ZStack{
                         RoundedRectangle(cornerRadius: 14)
@@ -61,6 +63,9 @@ struct EmotionResultView: View {
                     }
                 }
             }
+        }
+        .sheet(isPresented: $showingSheet){
+            InstructionsView(isShowing: $showingSheet)
         }
         .navigationBarBackButtonHidden()
         .toolbar{
