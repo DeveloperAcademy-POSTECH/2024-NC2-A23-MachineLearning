@@ -8,7 +8,7 @@
 import SwiftUI
 import Lottie
 
-struct ChooseEmotionAnimationView: UIViewRepresentable {
+struct AnimationView: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -19,15 +19,15 @@ struct ChooseEmotionAnimationView: UIViewRepresentable {
     var animationView = LottieAnimationView()
 
     class Coordinator: NSObject {
-        var parent: ChooseEmotionAnimationView
+        var parent: AnimationView
     
-        init(_ animationView: ChooseEmotionAnimationView) {
+        init(_ animationView: AnimationView) {
             self.parent = animationView
             super.init()
         }
     }
 
-    func makeUIView(context: UIViewRepresentableContext<ChooseEmotionAnimationView>) -> UIView {
+    func makeUIView(context: UIViewRepresentableContext<AnimationView>) -> UIView {
         let view = UIView()
 
         animationView.animation = LottieAnimation.named(name)
@@ -47,7 +47,7 @@ struct ChooseEmotionAnimationView: UIViewRepresentable {
         return view
     }
 
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<ChooseEmotionAnimationView>) {
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<AnimationView>) {
         animationView.play()
     }
 }

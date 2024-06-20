@@ -31,6 +31,7 @@ class ResultListViewModel: ObservableObject{
                              4: Emotions.anger, 5: Emotions.disgust, 6: Emotions.fear]
     // MARK: CLASSIFY ALL PROVIDED IMAGES
     func calculateAllResults() async {
+        print("started analyxing")
         guard let allImages = imageList else {
             print("List of images not found. Check and ensure image list is assigned to view model")
             return
@@ -38,6 +39,7 @@ class ResultListViewModel: ObservableObject{
         for image in allImages{
             chosenImage = image
             await performRequest()
+            print("finish analyzing")
         }
     }
     
