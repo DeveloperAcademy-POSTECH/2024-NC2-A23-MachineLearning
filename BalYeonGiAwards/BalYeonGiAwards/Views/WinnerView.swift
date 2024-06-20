@@ -42,7 +42,7 @@ struct WinnerView: View {
                         .foregroundStyle(.white)
                         .padding(.bottom, 121)
                     Button{
-                    
+                        
                     }label:{
                         HStack{
                             Text("결과 분석")
@@ -53,8 +53,13 @@ struct WinnerView: View {
                     }
                 }
                 .padding(.top, 28)
-                .offset(x: 50)
+                .offset(x: 70)
             }
+            Image("Trophy 2")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 500)
+                .offset(x: -90, y: 155)
         }
         .navigationBarBackButtonHidden()
         .onAppear(){
