@@ -107,8 +107,8 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
     
     func retakePhoto(){
         DispatchQueue.global(qos: .background).async{
-            self.captureSession.startRunning() //abit of lag here
             DispatchQueue.main.async {
+                self.currentPhoto = nil
                 self.currentState = .takePhoto
                 self.currentNum += 1
             }
@@ -122,6 +122,7 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
         }
         
         DispatchQueue.global(qos: .background).async{ [self] in
+            
             guard let imageData = photo.fileDataRepresentation() else {
                 print("Error while generating image from photo capture data.");
                 return
@@ -143,7 +144,7 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
             )
             guard let cgImage = uiImage.cgImage?.cropping(to: cropRect) else { return }
             let croppedImage = UIImage(cgImage: cgImage, scale: uiImage.scale, orientation: uiImage.imageOrientation)
-            self.captureSession.stopRunning()
+            
             DispatchQueue.main.async{ [self] in
                 self.currentPhoto = croppedImage
                 if self.currentNum + 1 == self.numPeople{
