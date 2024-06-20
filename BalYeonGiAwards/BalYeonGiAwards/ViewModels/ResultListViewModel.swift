@@ -115,7 +115,7 @@ class ResultListViewModel: ObservableObject{
             }
             let chosenEmotionProbability = probabilities[index]
             
-            var nextMaxProbability = chosenEmotionProbability
+            var nextMaxProbability = 0.0
             var nextMaxProbabilityIndex = index
             for i in 0..<probabilities.count{
                 guard i != index else {continue}
