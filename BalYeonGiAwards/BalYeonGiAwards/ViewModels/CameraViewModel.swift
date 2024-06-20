@@ -167,4 +167,11 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
             }
         }
     }
+    
+    func restartProcess(){
+        print("restart")
+        currentNum = 0
+        currentPhoto = nil
+        currentState = .takePhoto
+    }
 }

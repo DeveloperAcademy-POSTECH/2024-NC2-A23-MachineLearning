@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-class Result {
+class Result: Identifiable {
+    
     let image: UIImage
     let firstResult: (emotion: Emotions, probability: Double)
     let secondResult: (emotion: Emotions, probability: Double)

@@ -18,6 +18,7 @@ class Router: ObservableObject{
         case AllPhotosView
         case AnalyzeResultsView
         case WinnerView
+        case ResultListView
     }
     
     @ViewBuilder func view(for route: Destination) -> some View{
@@ -34,6 +35,8 @@ class Router: ObservableObject{
             AnalyzeResultsView()
         case .WinnerView:
             WinnerView()
+        case .ResultListView:
+            ResultListView()
         }
     }
     
