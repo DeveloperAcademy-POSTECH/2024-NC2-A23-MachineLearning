@@ -108,13 +108,9 @@ struct CameraView: View {
                     break
                 }
             } catch {
-                print("Unable to setup")
+                print("Error: Unable to setup")
             }
         }
         
     }
-}
-
-#Preview {
-    CameraView()
 }

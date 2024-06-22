@@ -39,7 +39,6 @@ struct AnalyzeResultsView: View {
                         .font(.custom("HSSanTokki2.0-Regular", size: 40))
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
-//                        .padding(.bottom, 106)
                 }
             }
         }
@@ -55,8 +54,4 @@ struct AnalyzeResultsView: View {
             }
         }
     }
-}
-
-#Preview {
-    AnalyzeResultsView()
 }

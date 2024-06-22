@@ -57,7 +57,3 @@ struct AllPhotosView: View {
         .navigationBarBackButtonHidden()
     }
 }
-
-#Preview {
-    AllPhotosView()
-}

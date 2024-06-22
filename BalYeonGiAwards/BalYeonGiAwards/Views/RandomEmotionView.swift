@@ -29,14 +29,9 @@ struct RandomEmotionView: View {
         .navigationBarBackButtonHidden()
         .onAppear() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
-                print("hello")
                 router.push(.EmotionResultView)
             }
         }
         
     }
-}
-
-#Preview {
-    RandomEmotionView()
 }

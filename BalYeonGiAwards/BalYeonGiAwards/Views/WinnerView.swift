@@ -67,7 +67,3 @@ struct WinnerView: View {
         }
     }
 }
-
-#Preview {
-    WinnerView()
-}
