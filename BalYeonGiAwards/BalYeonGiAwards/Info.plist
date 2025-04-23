@@ -4,8 +4,6 @@
 <dict>
 	<key>NSCameraReactionEffectGesturesEnabledDefault</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>For users to take photos within the app</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>TalkFile_HSSanTokki.ttf</string>
