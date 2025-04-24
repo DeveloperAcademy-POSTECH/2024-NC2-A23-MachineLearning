@@ -27,6 +27,7 @@ struct StartView: View {
                     .padding(.top,0)
                 Spacer()
                 Button{
+                    SoundManager.shared.playSound(sound: .StartButtonEffect)
                     router.push(.NumberOfPeopleView)
                 }label:{
                     ZStack{
@@ -42,6 +43,9 @@ struct StartView: View {
                 
             }.navigationDestination(for: Router.Destination.self){destination in
                 router.view(for: destination)
+            }
+            .onAppear {
+                SoundManager.shared.playSound(sound: .MainBGM, loop: true)
             }
             .background(Color.black)
             .ignoresSafeArea(edges: .top)
