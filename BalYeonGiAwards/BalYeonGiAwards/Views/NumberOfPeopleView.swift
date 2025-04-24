@@ -70,8 +70,7 @@ struct NumberOfPeopleView: View {
         .navigationBarBackButtonHidden()
         .toolbar{
             ToolbarItem(placement: .topBarLeading){
-                Button{
-                    router.pop()
+                Button {
                     router.pop()
                 }label: {
                     Image(systemName: "chevron.left")
