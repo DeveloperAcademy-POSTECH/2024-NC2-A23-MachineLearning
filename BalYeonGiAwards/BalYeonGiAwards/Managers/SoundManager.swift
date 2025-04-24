@@ -13,7 +13,10 @@ class SoundManager {
     
     var player: AVAudioPlayer?
     
+    var playing: Bool = true
+    
     func playSound(sound: SoundOption, loop: Bool = false) {
+        guard playing else { return }
         guard let url = Bundle.main.url(forResource: sound.rawValue, withExtension: ".mp3") else {return}
         do{
             player = try AVAudioPlayer(contentsOf: url)
@@ -26,7 +29,11 @@ class SoundManager {
         }catch let error{
             print("Error: \(error.localizedDescription)")
         }
-        
+    }
+    
+    func stopPlaying() {
+        guard player != nil else { return }
+        player?.stop()
     }
 }
 
