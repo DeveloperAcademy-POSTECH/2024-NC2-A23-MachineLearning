@@ -10,6 +10,19 @@
 		4F5C8D0F2C243E8D00C6F4BC /* Appstate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8D0E2C243E8D00C6F4BC /* Appstate.swift */; };
 		4F5C8D112C243F1C00C6F4BC /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8D102C243F1C00C6F4BC /* StartView.swift */; };
 		4F5C8D132C243F5300C6F4BC /* NumberOfPeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C8D122C243F5300C6F4BC /* NumberOfPeopleView.swift */; };
+		6B550CDC2DBA2C3500E7A35F /* 메인화면 배경음악.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CDB2DBA2C3500E7A35F /* 메인화면 배경음악.mp3 */; };
+		6B550CE32DBA2C3F00E7A35F /* 놀라움 연기 중 배경음악.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CDD2DBA2C3F00E7A35F /* 놀라움 연기 중 배경음악.mp3 */; };
+		6B550CE42DBA2C3F00E7A35F /* 분노 연기 중 배경음악.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CE02DBA2C3F00E7A35F /* 분노 연기 중 배경음악.mp3 */; };
+		6B550CE52DBA2C3F00E7A35F /* 두려움 연기 중 배경음악.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CDE2DBA2C3F00E7A35F /* 두려움 연기 중 배경음악.mp3 */; };
+		6B550CE62DBA2C3F00E7A35F /* 슬픔, 역겨움 연기 중 배경음악.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CE12DBA2C3F00E7A35F /* 슬픔, 역겨움 연기 중 배경음악.mp3 */; };
+		6B550CE72DBA2C3F00E7A35F /* 행복 연기 중 배경음악.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CE22DBA2C3F00E7A35F /* 행복 연기 중 배경음악.mp3 */; };
+		6B550CE82DBA2C3F00E7A35F /* 무표정 연기 중 배경음악.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CDF2DBA2C3F00E7A35F /* 무표정 연기 중 배경음악.mp3 */; };
+		6B550CEA2DBA2C5400E7A35F /* 시상식 입장하기 버튼 효과음.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CE92DBA2C5400E7A35F /* 시상식 입장하기 버튼 효과음.mp3 */; };
+		6B550CF02DBA2C6500E7A35F /* 연기력 분석 - 당첨 준비 효과음.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CEC2DBA2C6500E7A35F /* 연기력 분석 - 당첨 준비 효과음.mp3 */; };
+		6B550CF12DBA2C6500E7A35F /* 멋진 대결이었어요! 효과음.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CEB2DBA2C6500E7A35F /* 멋진 대결이었어요! 효과음.mp3 */; };
+		6B550CF22DBA2C6500E7A35F /* 최종 당첨화면 효과음.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CEF2DBA2C6500E7A35F /* 최종 당첨화면 효과음.mp3 */; };
+		6B550CF32DBA2C6500E7A35F /* 주제 정하는 효과음.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CED2DBA2C6500E7A35F /* 주제 정하는 효과음.mp3 */; };
+		6B550CF42DBA2C6500E7A35F /* 주제 정해졌을 때 효과음.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B550CEE2DBA2C6500E7A35F /* 주제 정해졌을 때 효과음.mp3 */; };
 		6B9310A62C21531300A1F361 /* BalYeonGiAwardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310A52C21531300A1F361 /* BalYeonGiAwardsApp.swift */; };
 		6B9310A82C21531300A1F361 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9310A72C21531300A1F361 /* ContentView.swift */; };
 		6B9310AA2C21531400A1F361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B9310A92C21531400A1F361 /* Assets.xcassets */; };
@@ -60,6 +73,19 @@
 		4F5C8D0E2C243E8D00C6F4BC /* Appstate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appstate.swift; sourceTree = "<group>"; };
 		4F5C8D102C243F1C00C6F4BC /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		4F5C8D122C243F5300C6F4BC /* NumberOfPeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfPeopleView.swift; sourceTree = "<group>"; };
+		6B550CDB2DBA2C3500E7A35F /* 메인화면 배경음악.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "메인화면 배경음악.mp3"; sourceTree = "<group>"; };
+		6B550CDD2DBA2C3F00E7A35F /* 놀라움 연기 중 배경음악.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "놀라움 연기 중 배경음악.mp3"; sourceTree = "<group>"; };
+		6B550CDE2DBA2C3F00E7A35F /* 두려움 연기 중 배경음악.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "두려움 연기 중 배경음악.mp3"; sourceTree = "<group>"; };
+		6B550CDF2DBA2C3F00E7A35F /* 무표정 연기 중 배경음악.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "무표정 연기 중 배경음악.mp3"; sourceTree = "<group>"; };
+		6B550CE02DBA2C3F00E7A35F /* 분노 연기 중 배경음악.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "분노 연기 중 배경음악.mp3"; sourceTree = "<group>"; };
+		6B550CE12DBA2C3F00E7A35F /* 슬픔, 역겨움 연기 중 배경음악.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "슬픔, 역겨움 연기 중 배경음악.mp3"; sourceTree = "<group>"; };
+		6B550CE22DBA2C3F00E7A35F /* 행복 연기 중 배경음악.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "행복 연기 중 배경음악.mp3"; sourceTree = "<group>"; };
+		6B550CE92DBA2C5400E7A35F /* 시상식 입장하기 버튼 효과음.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "시상식 입장하기 버튼 효과음.mp3"; sourceTree = "<group>"; };
+		6B550CEB2DBA2C6500E7A35F /* 멋진 대결이었어요! 효과음.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "멋진 대결이었어요! 효과음.mp3"; sourceTree = "<group>"; };
+		6B550CEC2DBA2C6500E7A35F /* 연기력 분석 - 당첨 준비 효과음.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "연기력 분석 - 당첨 준비 효과음.mp3"; sourceTree = "<group>"; };
+		6B550CED2DBA2C6500E7A35F /* 주제 정하는 효과음.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "주제 정하는 효과음.mp3"; sourceTree = "<group>"; };
+		6B550CEE2DBA2C6500E7A35F /* 주제 정해졌을 때 효과음.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "주제 정해졌을 때 효과음.mp3"; sourceTree = "<group>"; };
+		6B550CEF2DBA2C6500E7A35F /* 최종 당첨화면 효과음.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "최종 당첨화면 효과음.mp3"; sourceTree = "<group>"; };
 		6B9310A22C21531300A1F361 /* BalYeonGiAwards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BalYeonGiAwards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9310A52C21531300A1F361 /* BalYeonGiAwardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalYeonGiAwardsApp.swift; sourceTree = "<group>"; };
 		6B9310A72C21531300A1F361 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +144,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B550CD72DBA2C0000E7A35F /* AudioFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6B550CDA2DBA2C1C00E7A35F /* BackgroundMusic */,
+				6B550CD92DBA2C1500E7A35F /* Effect */,
+				6B550CD82DBA2C0E00E7A35F /* ButtonEffect */,
+			);
+			path = AudioFiles;
+			sourceTree = "<group>";
+		};
+		6B550CD82DBA2C0E00E7A35F /* ButtonEffect */ = {
+			isa = PBXGroup;
+			children = (
+				6B550CE92DBA2C5400E7A35F /* 시상식 입장하기 버튼 효과음.mp3 */,
+			);
+			path = ButtonEffect;
+			sourceTree = "<group>";
+		};
+		6B550CD92DBA2C1500E7A35F /* Effect */ = {
+			isa = PBXGroup;
+			children = (
+				6B550CEB2DBA2C6500E7A35F /* 멋진 대결이었어요! 효과음.mp3 */,
+				6B550CEC2DBA2C6500E7A35F /* 연기력 분석 - 당첨 준비 효과음.mp3 */,
+				6B550CED2DBA2C6500E7A35F /* 주제 정하는 효과음.mp3 */,
+				6B550CEE2DBA2C6500E7A35F /* 주제 정해졌을 때 효과음.mp3 */,
+				6B550CEF2DBA2C6500E7A35F /* 최종 당첨화면 효과음.mp3 */,
+			);
+			path = Effect;
+			sourceTree = "<group>";
+		};
+		6B550CDA2DBA2C1C00E7A35F /* BackgroundMusic */ = {
+			isa = PBXGroup;
+			children = (
+				6B550CDB2DBA2C3500E7A35F /* 메인화면 배경음악.mp3 */,
+				6B550CDD2DBA2C3F00E7A35F /* 놀라움 연기 중 배경음악.mp3 */,
+				6B550CDE2DBA2C3F00E7A35F /* 두려움 연기 중 배경음악.mp3 */,
+				6B550CDF2DBA2C3F00E7A35F /* 무표정 연기 중 배경음악.mp3 */,
+				6B550CE02DBA2C3F00E7A35F /* 분노 연기 중 배경음악.mp3 */,
+				6B550CE12DBA2C3F00E7A35F /* 슬픔, 역겨움 연기 중 배경음악.mp3 */,
+				6B550CE22DBA2C3F00E7A35F /* 행복 연기 중 배경음악.mp3 */,
+			);
+			path = BackgroundMusic;
+			sourceTree = "<group>";
+		};
 		6B9310992C21531300A1F361 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +212,7 @@
 		6B9310A42C21531300A1F361 /* BalYeonGiAwards */ = {
 			isa = PBXGroup;
 			children = (
+				6B550CD72DBA2C0000E7A35F /* AudioFiles */,
 				6B9310F92C22AFD700A1F361 /* TalkFile_HSSanTokki.ttf */,
 				6B93110D2C23CB9200A1F361 /* AnalyzingResults.json */,
 				6B9310F52C22AB9F00A1F361 /* animation.json */,
@@ -341,8 +412,21 @@
 			files = (
 				6B9310AD2C21531400A1F361 /* Preview Assets.xcassets in Resources */,
 				6B93110E2C23CB9200A1F361 /* AnalyzingResults.json in Resources */,
+				6B550CE32DBA2C3F00E7A35F /* 놀라움 연기 중 배경음악.mp3 in Resources */,
+				6B550CE42DBA2C3F00E7A35F /* 분노 연기 중 배경음악.mp3 in Resources */,
+				6B550CF02DBA2C6500E7A35F /* 연기력 분석 - 당첨 준비 효과음.mp3 in Resources */,
+				6B550CF12DBA2C6500E7A35F /* 멋진 대결이었어요! 효과음.mp3 in Resources */,
+				6B550CF22DBA2C6500E7A35F /* 최종 당첨화면 효과음.mp3 in Resources */,
+				6B550CF32DBA2C6500E7A35F /* 주제 정하는 효과음.mp3 in Resources */,
+				6B550CF42DBA2C6500E7A35F /* 주제 정해졌을 때 효과음.mp3 in Resources */,
+				6B550CE52DBA2C3F00E7A35F /* 두려움 연기 중 배경음악.mp3 in Resources */,
+				6B550CE62DBA2C3F00E7A35F /* 슬픔, 역겨움 연기 중 배경음악.mp3 in Resources */,
+				6B550CEA2DBA2C5400E7A35F /* 시상식 입장하기 버튼 효과음.mp3 in Resources */,
+				6B550CE72DBA2C3F00E7A35F /* 행복 연기 중 배경음악.mp3 in Resources */,
+				6B550CE82DBA2C3F00E7A35F /* 무표정 연기 중 배경음악.mp3 in Resources */,
 				6B9310F62C22AB9F00A1F361 /* animation.json in Resources */,
 				6B9310FA2C22AFD700A1F361 /* TalkFile_HSSanTokki.ttf in Resources */,
+				6B550CDC2DBA2C3500E7A35F /* 메인화면 배경음악.mp3 in Resources */,
 				6B9310AA2C21531400A1F361 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
