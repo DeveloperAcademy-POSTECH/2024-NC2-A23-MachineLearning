@@ -99,6 +99,11 @@ struct CameraView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            if let chosenEmotion = resultVM.chosenEmotion {
+                SoundManager.shared.playSound(sound: chosenEmotion.BGM(), loop: true)
+            }
+        }
         .task{
             do{
                 switch await cameraVM.checkCaptureAuthorizationStatus() {

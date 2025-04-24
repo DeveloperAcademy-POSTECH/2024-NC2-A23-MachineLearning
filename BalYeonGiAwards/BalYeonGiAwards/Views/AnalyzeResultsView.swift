@@ -47,6 +47,7 @@ struct AnalyzeResultsView: View {
             resultVM.imageList = cameraVM.photos // change later
             await resultVM.calculateAllResults()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                SoundManager.shared.playSound(sound: .DrumRollEffect)
                 showTrophy = true
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5){

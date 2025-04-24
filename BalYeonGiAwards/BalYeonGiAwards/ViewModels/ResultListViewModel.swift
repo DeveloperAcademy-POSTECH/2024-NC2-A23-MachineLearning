@@ -56,6 +56,25 @@ enum Emotions: String, CaseIterable{
             "두려움"
         }
     }
+    
+    func BGM() -> SoundOption {
+        switch self {
+        case .anger:
+                .AngerBGM
+        case .disgust:
+                .SadnessBGM
+        case .neutral:
+                .NeutralBGM
+        case .happiness:
+                .HappyBGM
+        case .surprise:
+                .SurpriseBGM
+        case .sadness:
+                .SadnessBGM
+        case .fear:
+                .FearBGM
+        }
+    }
 }
 
 class ResultListViewModel: ObservableObject{
