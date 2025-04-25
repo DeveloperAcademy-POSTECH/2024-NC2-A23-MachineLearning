@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 @main
 struct BalYeonGiAwardsApp: App {
@@ -16,16 +17,19 @@ struct BalYeonGiAwardsApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//            CameraView()
-//                .environmentObject(cameraVM)
-//            EmotionResultView()
-//            ResultListView()
             StartView()
                 .environmentObject(router)
                 .environmentObject(cameraVM)
                 .environmentObject(resultListVM)
                 .environmentObject(appState)
+                .onAppear {
+                    do {
+                        try AVAudioSession.sharedInstance()
+                            .setCategory(.playback, mode: .moviePlayback, options: .duckOthers)
+                    } catch {
+                        print("AppDelegate Debug - Error setting AVAudioSession category. Because of this, there may be no sound. \(error)")
+                    }
+                }
         }
     }
 }
