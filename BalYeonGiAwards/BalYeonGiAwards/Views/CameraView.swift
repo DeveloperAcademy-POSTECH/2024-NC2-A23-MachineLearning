@@ -99,6 +99,11 @@ struct CameraView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            if let chosenEmotion = resultVM.chosenEmotion {
+                SoundManager.shared.playSound(sound: chosenEmotion.BGM(), loop: true)
+            }
+        }
         .task{
             do{
                 switch await cameraVM.checkCaptureAuthorizationStatus() {
@@ -108,13 +113,9 @@ struct CameraView: View {
                     break
                 }
             } catch {
-                print("Unable to setup")
+                print("Error: Unable to setup")
             }
         }
         
     }
-}
-
-#Preview {
-    CameraView()
 }

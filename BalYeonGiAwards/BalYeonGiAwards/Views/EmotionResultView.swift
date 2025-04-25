@@ -81,6 +81,7 @@ struct EmotionResultView: View {
             }
         }
         .onAppear(){
+            SoundManager.shared.playSound(sound: .EmotionChosenEffect)
             cameraVM.numPeople = appState.numberOfPeople
             chosenEmotion = Emotions.allCases.randomElement()
             resultListVM.chosenEmotion = chosenEmotion
@@ -89,6 +90,3 @@ struct EmotionResultView: View {
     
 }
 
-#Preview {
-    EmotionResultView()
-}

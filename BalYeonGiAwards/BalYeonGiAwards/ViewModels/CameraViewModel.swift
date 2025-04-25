@@ -101,7 +101,6 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
     func takePhoto(){
         DispatchQueue.global(qos: .background).async{
             self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
-            print("took photo")
         }
     }
     
@@ -129,7 +128,7 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
             }
             
             guard var uiImage = UIImage(data: imageData) else {
-                print("Unable to generate UIImage from image data.");
+                print("Error: Unable to generate UIImage from image data.");
                 return
             }
             
@@ -145,7 +144,7 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
             )
             
             guard let cgImage = uiImage.cgImage?.cropping(to: cropRect) else {
-                print("Issues with crop")
+                print("Error: Issues with crop")
                 return
             }
             let croppedImage = UIImage(cgImage: cgImage, scale: uiImage.scale, orientation: .leftMirrored)
@@ -157,7 +156,6 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
                 }else{
                     self.currentState = .nextPerson
                 }
-                print("Picture taken: \(currentPhoto)")
                 if let image = currentPhoto{
                     if currentNum == 0{
                         photos = []
@@ -169,7 +167,6 @@ class CameraViewModel: NSObject, AVCapturePhotoCaptureDelegate, ObservableObject
     }
     
     func restartProcess(){
-        print("restart")
         currentNum = 0
         currentPhoto = nil
         currentState = .takePhoto

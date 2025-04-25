@@ -63,10 +63,6 @@ model.eval()
 
 example_input = torch.randn(1, 1, 48, 48)
 
-# Load the image
-img_path = 'angry.jpeg'
-image = Image.open(img_path)
-
 traced_model = torch.jit.trace(model, example_input)
 
 import coremltools as ct

@@ -70,7 +70,3 @@ struct ResultListView: View {
         }
     }
 }
-
-//#Preview {
-//    ResultListView()
-//}

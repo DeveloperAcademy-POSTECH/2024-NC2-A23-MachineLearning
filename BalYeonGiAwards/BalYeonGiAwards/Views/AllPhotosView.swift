@@ -54,10 +54,9 @@ struct AllPhotosView: View {
                 .padding(.bottom, 72)
             }
         }
+        .onAppear {
+            SoundManager.shared.playSound(sound: .AllPhotosEffect)
+        }
         .navigationBarBackButtonHidden()
     }
-}
-
-#Preview {
-    AllPhotosView()
 }

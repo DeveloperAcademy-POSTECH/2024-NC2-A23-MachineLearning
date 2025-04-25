@@ -56,28 +56,47 @@ enum Emotions: String, CaseIterable{
             "두려움"
         }
     }
+    
+    func BGM() -> SoundOption {
+        switch self {
+        case .anger:
+                .AngerBGM
+        case .disgust:
+                .SadnessBGM
+        case .neutral:
+                .NeutralBGM
+        case .happiness:
+                .HappyBGM
+        case .surprise:
+                .SurpriseBGM
+        case .sadness:
+                .SadnessBGM
+        case .fear:
+                .FearBGM
+        }
+    }
 }
 
 class ResultListViewModel: ObservableObject{
     private var chosenImage: UIImage?
+    private var model: ModelNew?
     var chosenEmotion: Emotions?
     var imageList: [UIImage]?
     var results = [Result]() //might need to bind this
+    
     @Published var winner: Result?
     
     var emotionDictionary = [0: Emotions.neutral, 1: Emotions.happiness, 2: Emotions.surprise, 3: Emotions.sadness,
                              4: Emotions.anger, 5: Emotions.disgust, 6: Emotions.fear]
     // MARK: CLASSIFY ALL PROVIDED IMAGES
     func calculateAllResults() async {
-        print("started analyxing")
+        createModel()
         guard let allImages = imageList else {
-            print("List of images not found. Check and ensure image list is assigned to view model")
             return
         }
         for image in allImages{
             chosenImage = image
             await performRequest()
-            print("finish analyzing")
         }
     }
     
@@ -85,27 +104,33 @@ class ResultListViewModel: ObservableObject{
         results = []
     }
     
+    // MARK: CREATE MODEL
+    private func createModel(){
+        guard let mlModel = try? ModelNew(configuration: .init()) else{
+            print("Error: Failed to make model")
+            return
+        }
+        model = mlModel
+    }
+    
     // MARK: GETTING CLASSIFICATION OUTPUT FROM MODEL AFTER INPUTTING IMAGE DATA
     private func performRequest() async{
         guard let uiImage = chosenImage else{
-            print("No Image")
+            print("Error: No Image")
             return
         }
         guard let multiArray = imageToMLMultiArray(image: uiImage, size: CGSize(width: 48, height: 48)) else {return}
         
-        guard let mlModel = try? ModelNew(configuration: .init()) else{
-            print("Failed to make model")
-            return
-        }
+        guard let mlModel = model else {return}
+        
         do{
             let prediction = try await mlModel.prediction(input: ModelNewInput(input: multiArray))
-            print(prediction.var_267)
             let predictionArray = convertToArray(prediction.var_267)
             let probabilities = softmax(predictionArray)
             var resultString = ""
             
             guard let emotion = chosenEmotion else {
-                print("Emotion is unavailable")
+                print("Error: Emotion is unavailable")
                 return
             }
             let chosenEmotionProbabilityIndex = emotionDictionary.first(where: {$0.value == emotion})?.key
@@ -131,13 +156,13 @@ class ResultListViewModel: ObservableObject{
                     let secondEmotion = nextEmotion,
                     let image = chosenImage else 
             {
-                print("Emotions or image missing")
+                print("Error: Emotions or image missing")
                 return
             }
             let result = Result(image: image, firstResult: (firstEmotion, roundedProbability(from: chosenEmotionProbability)), secondResult: (secondEmotion, roundedProbability(from: nextMaxProbability)))
             results.append(result)
         } catch{
-            print("error: \(error)")
+            print("Error: \(error)")
         }
     }
     

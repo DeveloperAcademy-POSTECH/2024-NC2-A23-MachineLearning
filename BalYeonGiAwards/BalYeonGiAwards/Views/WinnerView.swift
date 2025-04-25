@@ -63,11 +63,8 @@ struct WinnerView: View {
         }
         .navigationBarBackButtonHidden()
         .onAppear(){
+            SoundManager.shared.playSound(sound: .WinnerEffect)
             resultVM.winner = resultVM.results.min()
         }
     }
-}
-
-#Preview {
-    WinnerView()
 }
