@@ -29,7 +29,7 @@ struct RandomEmotionView: View {
         .navigationBarBackButtonHidden()
         .onAppear() {
             SoundManager.shared.playSound(sound: .RandomEmotionEffect)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
                 router.push(.EmotionResultView)
             }
         }
